@@ -1,0 +1,44 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.wallex.asia/docs/intro
+docs:
+- https://docs.wallex.asia/docs/intro
+- https://docs.wallex.asia/docs/api/authentication/authenticate
+- https://docs.wallex.asia/docs/api/authentication/authenticate-yaml
+summary:
+  types: [apiKey, http]
+  api_key_in: [header]
+  model: >-
+    Two-layer auth. Every request carries a static X-Api-Key header for
+    identification. Restricted resources additionally require a short-lived
+    Bearer token (Authorization header) obtained by exchanging accessKeyId +
+    secretAccessKey at POST /v2/authenticate. Tokens are valid for 8 hours and
+    can be refreshed at any time; Log Out invalidates a token before expiry.
+credentials:
+  provisioning: Credentials are issued by Wallex on request (contact@wallextech.com); there is no self-serve key page for the Partner API.
+  items:
+  - name: X-Api-Key
+    description: Static key that identifies the partner on every request. Missing/invalid returns 403 Forbidden.
+  - name: accessKeyId
+    description: Used with secretAccessKey to obtain the authorization token.
+  - name: secretAccessKey
+    description: Used with accessKeyId to obtain the authorization token.
+schemes:
+  - name: ApiKeyAuth
+    type: apiKey
+    in: header
+    parameter_name: X-Api-Key
+    required: always
+    source: docs
+  - name: BearerAuth
+    type: http
+    scheme: bearer
+    bearer_format: opaque-token
+    token_endpoint: POST /v2/authenticate
+    token_ttl_seconds: 28800
+    required: restricted-resources
+    revocation: POST /v2/logout
+    source: docs
+missing_header_behavior:
+  no_api_key: 403 Forbidden
+  no_authorization: 401 Unauthorized

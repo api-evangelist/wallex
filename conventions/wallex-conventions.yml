@@ -1,0 +1,42 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.wallex.asia/docs/intro
+docs:
+- https://docs.wallex.asia/docs/intro
+- https://docs.wallex.asia/docs/concept
+- https://docs.wallex.asia/docs/api-docs/webhooks
+authentication:
+  style: api-key-plus-bearer
+  detail: X-Api-Key on every request; Authorization Bearer token (8h) for restricted resources.
+  see: authentication/wallex-authentication.yml
+versioning:
+  scheme: uri-path
+  current: v2
+  spec_version: 2.0.x
+  detail: All operations are served under the /v2 path prefix (e.g. POST /v2/authenticate).
+request_tracing:
+  header: X-Request-ID
+  required: false
+  detail: Optional client-supplied correlation id passed to help the Wallex team track and resolve specific requests.
+idempotency:
+  supported: false
+  detail: No idempotency-key mechanism is documented for the Wallex Partner API. Payment safety is instead staged via the quote -> create -> fund lifecycle (funds are only moved on the explicit Fund step).
+on_behalf_of:
+  detail: Partners scope a call to a member using onBehalfOfAccount (recommended; resolves first approved user) or onBehalfOfUser (targets a specific approved user), passed in the body or as a query parameter.
+  params: [onBehalfOfAccount, onBehalfOfUser]
+pagination:
+  detail: Listing endpoints return arrays of objects (e.g. Users listing is sorted by registration date, most recent first). No cursor/offset parameter scheme is documented in the overview.
+rate_limiting:
+  limit: 5 requests per second
+  daily_cap: 432000 requests per day
+  custom: Available on request (contact@wallextech.com).
+  see: https://docs.wallex.asia/docs/intro
+error_envelope:
+  detail: Standard HTTP status codes are used — 400 (bad request), 401 (missing/invalid Authorization), 403 (missing/invalid X-Api-Key). See errors/wallex-problem-types.yml.
+  format: http-status-codes
+  see: errors/wallex-problem-types.yml
+webhooks:
+  detail: Single partner subscription endpoint; Wallex POSTs events and expects a 200 within 30s, else retries up to 3 times. Inbound IP whitelisting is published per region.
+  see: asyncapi/wallex-webhooks.yml
+lifecycle:
+  see: lifecycle/wallex-lifecycle.yml

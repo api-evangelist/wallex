@@ -1,0 +1,43 @@
+generated: '2026-07-21'
+method: derived
+status: candidate
+source: https://docs.wallex.asia/llms.txt
+notes: >-
+  No official hosted/remote Wallex MCP server was found (checked docs, npm
+  @modelcontextprotocol, MCP registries). This is a DERIVED candidate tool list
+  mapping documented Wallex Partner API operations to MCP tools. Each tool
+  corresponds to a documented operation slug in llms/wallex-llms.txt.
+server:
+  name: wallex
+  transport: http
+  url: null
+  base_api: https://api.wallex.asia/v2
+  auth: X-Api-Key header + Bearer token (POST /v2/authenticate)
+tools:
+  - {name: authenticate, description: Mint an 8-hour bearer token from accessKeyId/secretAccessKey, source_operation: "docs#authenticate"}
+  - {name: logout, description: Invalidate the current bearer token, source_operation: "docs#logout"}
+  - {name: list_balances, description: List all balances on the account, source_operation: "docs#balances-listing"}
+  - {name: get_balance_by_currency, description: Retrieve balance for a currency, source_operation: "docs#balance-retrieve-by-currency"}
+  - {name: list_balance_history, description: List transactions for the account, source_operation: "docs#balances-history-listing"}
+  - {name: list_beneficiaries, description: List beneficiaries, source_operation: "docs#beneficiaries-listing"}
+  - {name: create_beneficiary, description: Create a beneficiary, source_operation: "docs#beneficiary-create"}
+  - {name: get_beneficiary_requirements, description: Get required fields for a currency/country beneficiary, source_operation: "docs#beneficiary-requirement"}
+  - {name: validate_swift, description: Validate a SWIFT/BIC code, source_operation: "docs#swift-validation"}
+  - {name: list_collection_accounts, description: List virtual collection accounts, source_operation: "docs#collection-accounts-listing"}
+  - {name: create_collection_account, description: Create a virtual account in a currency, source_operation: "docs#collection-account-create"}
+  - {name: create_collection_request, description: Create a collection request, source_operation: "docs#collection-request-create"}
+  - {name: quote_conversion, description: Get a conversion quote, source_operation: "docs#conversion-quote"}
+  - {name: create_conversion, description: Create a conversion, source_operation: "docs#conversion-create"}
+  - {name: fund_conversion, description: Fund a conversion, source_operation: "docs#conversion-fund"}
+  - {name: list_currencies, description: List supported currencies, source_operation: "docs#currencies-listing"}
+  - {name: get_currency_rates, description: Real-time rate for a currency pair, source_operation: "docs#currency-rates"}
+  - {name: list_payment_channels, description: List available payment channels and limits, source_operation: "docs#payment-channels"}
+  - {name: quote_payment, description: Get a payment quote, source_operation: "docs#payment-quote"}
+  - {name: create_payment, description: Create a simple payment, source_operation: "docs#payment-create"}
+  - {name: fund_payment, description: Fund a simple payment, source_operation: "docs#payment-fund"}
+  - {name: get_payment, description: Retrieve a payment, source_operation: "docs#payment-retrieve"}
+  - {name: create_internal_transfer, description: Transfer between accounts in the same partnership, source_operation: "docs#internal-transfer-create"}
+  - {name: list_users, description: List member users, source_operation: "docs#users-listing"}
+  - {name: screen_user, description: Trigger compliance screening for a user, source_operation: "docs#user-screening"}
+  - {name: get_webhook, description: Retrieve webhook subscription settings, source_operation: "docs#webhook-retrieve"}
+  - {name: update_webhook, description: Update webhook subscription URL/headers, source_operation: "docs#webhook-update"}

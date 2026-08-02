@@ -1,0 +1,37 @@
+generated: '2026-07-21'
+method: searched
+source: live probes of /.well-known/* and common discovery paths
+notes: >-
+  The docs host (docs.wallex.asia) is a Docusaurus 3.10 single-page app that
+  returns a soft HTTP 200 with the SPA HTML shell for ANY unknown path — so
+  /.well-known/security.txt, /openid-configuration, /oauth-authorization-server,
+  /api-catalog, /ai-plugin.json and /openapi.json all "200" but serve HTML, not
+  a real well-known document. They are recorded as soft_200_html and NOT saved.
+  The API host (api.wallex.asia) returns 403 to unauthenticated probes.
+  No genuine /.well-known discovery documents were found.
+hosts:
+- host: https://docs.wallex.asia
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    result: soft_200_html
+  - path: /.well-known/openid-configuration
+    status: 200
+    result: soft_200_html
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    result: soft_200_html
+  - path: /.well-known/api-catalog
+    status: 200
+    result: soft_200_html
+  - path: /.well-known/ai-plugin.json
+    status: 200
+    result: soft_200_html
+- host: https://api.wallex.asia
+  documents:
+  - path: /.well-known/security.txt
+    status: 403
+  - path: /.well-known/openid-configuration
+    status: 403
+  - path: /.well-known/oauth-authorization-server
+    status: 403

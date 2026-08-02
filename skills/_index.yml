@@ -1,0 +1,20 @@
+generated: '2026-07-21'
+method: generated
+source: https://docs.wallex.asia/llms.txt
+notes: >-
+  Agent Skills generated from the documented Wallex Partner API operation flows
+  (llms/wallex-llms.txt). Operation identifiers are the documented operation
+  slugs; no OpenAPI spec is published, so operations are grounded in the docs.
+skills:
+  - file: wallex-send-cross-border-payment.md
+    name: Send a cross-border payment
+    api: llms/wallex-llms.txt
+    operations: [authenticate, payment-quote, payment-create, payment-fund, payment-retrieve]
+  - file: wallex-receive-funds-collection.md
+    name: Receive funds via a virtual collection account
+    api: llms/wallex-llms.txt
+    operations: [authenticate, supported-currencies, collection-account-create, collection-request-create, collection-request-retrieve]
+  - file: wallex-onboard-member.md
+    name: Onboard and screen a partner member
+    api: llms/wallex-llms.txt
+    operations: [authenticate, sign-up, customer-due-diligence-update, document-create, user-screening]

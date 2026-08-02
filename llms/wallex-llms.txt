@@ -1,0 +1,117 @@
+<!-- generated: 2026-07-21 | method: searched | source: https://docs.wallex.asia/llms.txt -->
+# Wallex Developer Center
+
+> Wallex Developer Center documents the Wallex Partner API for authentication, users, balances, funding, collections, payments, conversions, webhooks, and related API workflows.
+
+
+## Docs
+
+- [Authenticate](/docs/api/authentication/authenticate.md): When you successfully authenticate, you receive a token that is **valid for 8 hours** from the time it is issued. After these 8 hours, the token will expire, and you will need to obtain a new one to continue accessing the system. However, you do not need to wait for the token to expire to get a new one; you can request a new token at any time, even if the current token is still valid. This allows you to ensure continuous access without any interruptions due to token expiration.
+- [Authenticate YAML](/docs/api/authentication/authenticate-yaml.md)
+- [Log Out](/docs/api/authentication/logout.md): The token will be invalidated and become unusable even if it hasn't yet reached its expiration time. This means that certain conditions or actions can render the token invalid before its scheduled expiration, making it necessary to obtain a new token to continue accessing the system.
+- [Balance Retrieve by Currency](/docs/api/balances/balance-retrieve-by-currency.md): Returns the balance associated with the provided currency, allowing for retrieval of detailed information specific to that balance.
+- [Balance Retrieve by ID](/docs/api/balances/balance-retrieve-by-id.md): Returns the balance associated with the provided balance id, allowing for retrieval of detailed information specific to that balance.
+- [Balances History Listing](/docs/api/balances/balances-history-listing.md): Retrieves all transactions linked to the current Account, returning them as an array of Transaction objects.
+- [Balances Listing](/docs/api/balances/balances-listing.md): Retrieves all balances linked to the current Account, returning them as an array of Balance objects.
+- [Balances YAML](/docs/api/balances/balances-yaml.md)
+- [Beneficiaries Listing](/docs/api/beneficiaries/beneficiaries-listing.md): Retrieves all beneficiaries linked to the current Account, returning them as an array of Beneficiary objects.
+- [Beneficiaries YAML](/docs/api/beneficiaries/beneficiaries-yaml.md)
+- [Beneficiary Create](/docs/api/beneficiaries/beneficiary-create.md): Creates a new beneficiary. The required parameters vary based on the Entity Type of Beneficiary, Currency, and the countries of the Beneficiary and Bank. To ensure all necessary parameters are provided, please call [Beneficiary Requirement](../beneficiaries/beneficiary-requirement) beforehand to retrieve the specific requirements for your situation.
+- [Beneficiary Delete](/docs/api/beneficiaries/beneficiary-delete.md): Deletes the beneficiary identified by the specified Beneficiary ID and returns the Beneficiary object one last time before removal.
+- [Beneficiary Requirements](/docs/api/beneficiaries/beneficiary-requirement.md): Provides the necessary fields and their validation rules for creating a beneficiary, tailored to the Currency, Beneficiary Country, and Beneficiary Bank Country.
+- [Beneficiary Retrieve](/docs/api/beneficiaries/beneficiary-retrieve.md): Returns the beneficiary associated with the provided Beneficiary ID, allowing for retrieval of detailed information specific to that beneficiary.
+- [Beneficiary Validation](/docs/api/beneficiaries/beneficiary-validation.md): The Beneficiary Validation API provides match scores and suggestions to ensure accurate beneficiary field inputs, helping to prevent payment rejections due to invalid beneficiary data. This feature is disabled by default and is available only for limited countries. To enable this feature, please contact us at contact@wallextech.com.
+- [China Banks Listing](/docs/api/beneficiaries/china-banks-listing.md): Retrieves a complete list of Chinese banks, used to validate the bank name for individual beneficiaries when sending CNY to China.
+- [Cities Listing](/docs/api/beneficiaries/cities-listing.md): Retrieves a list of cities within a specified state.
+- [States Listing](/docs/api/beneficiaries/states-listing.md): Retrieves a list of states or regions within a specified country.
+- [SWIFT Validation](/docs/api/beneficiaries/swift-validation.md): Retrieves bank information necessary for validating a SWIFT code.
+- [Collection Account Create](/docs/api/collections/collection-account-create.md): Generate virtual accounts in a specified currency, assigned to a designated user. By default, this API is only available for member accounts. Please contact contact@wallextech.com if you require this feature for a partner account.
+- [Collection Account Deactivate](/docs/api/collections/collection-account-deactivate.md): Deactivates one or more Virtual Account (VA) collection accounts in a single request.
+- [Collection Account Retrieve](/docs/api/collections/collection-account-retrieve.md): Returns the collection account associated with the provided collection account id, allowing for retrieval of detailed information specific to that collection account.
+- [Collection Account Status Notification](/docs/api/collections/collection-account-webhook.md): Enables partners to subscribe to collection account status updates. For detailed information on using collection account notifications and their features, please refer to our [Webhook Notifications](../../api-docs/webhooks) documentation.
+- [Collection Accounts Listing](/docs/api/collections/collection-accounts-listing.md): Retrieves all collection accounts linked to the current Account, returning them as an array of Collection Account objects.
+- [Collection Retrieve](/docs/api/collections/collection-retrieve.md): Returns the collection associated with the provided collection id, allowing for retrieval of detailed information specific to that collection.
+- [Collection Upload URL](/docs/api/collections/collection-upload-url.md): Obtain a specific URL that you can use to upload necessary files of a collection transaction. Please upload your document by following the instructions provided in the [File Upload](../utils/file-upload) documentation.
+- [Collection Status Notification](/docs/api/collections/collection-webhook.md): Enables partners to subscribe to collection status updates. For detailed information on using collection notifications and their features, please refer to our [Webhook Notifications](../../api-docs/webhooks) documentation.
+- [Collections Listing](/docs/api/collections/collections-listing.md): Retrieves all collection linked to the current Account, returning them as an array of Collection objects.
+- [Collections YAML](/docs/api/collections/collections-yaml.md)
+- [Available Currencies](/docs/api/collections/supported-currencies.md): Retrieves a list of supported currencies for collection accounts, along with the associated currency providers available for each currency. This API is useful to consult before setting up collection accounts to ensure compatibility with your preferred currency and provider.
+- [Collection Request Cancel](/docs/api/collections-request/collection-request-cancel.md): To update the status of collection request to **Cancel**.
+- [Collection Request Create](/docs/api/collections-request/collection-request-create.md): Initiate a new collection request, allowing you to receive payments through Virtual Accounts in your client’s local currency, with automatic conversion to your designated currency in your Wallex wallet.
+- [Collection Request Paid](/docs/api/collections-request/collection-request-paid.md): Manually update the status of the collection request to **Full Paid** without requiring an actual payment transaction.
+- [Collection Request Retrieve](/docs/api/collections-request/collection-request-retrieve.md): Returns the collection request associated with the provided collection request id, allowing for retrieval of detailed information specific to that collection request.
+- [Collection Request Status Notification](/docs/api/collections-request/collection-request-webhook.md): Enables partners to subscribe to collection request status updates. For detailed information on using simple payment notifications and their features, please refer to our [Webhook Notifications](../../api-docs/webhooks) documentation.
+- [Collections Request Listing](/docs/api/collections-request/collections-request-listing.md): Retrieves all collections request linked to the current Account, returning them as an array of collection request objects.
+- [Collections Request YAML](/docs/api/collections-request/collections-request-yaml.md)
+- [Purpose Code Listing](/docs/api/collections-request/purpose-codes-listing.md): Retrieves a list of purpose codes for collection request.
+- [Conversion Create](/docs/api/conversions/conversion-create.md): Create conversion.
+- [Conversion Fund](/docs/api/conversions/conversion-fund.md): Fund conversion.
+- [Conversion Quote](/docs/api/conversions/conversion-quote.md): Retrieve a quote or rates for a conversion based on the specified currency pair and amount.
+- [Conversion Retrieve](/docs/api/conversions/conversion-retrieve.md): Returns the conversion associated with the provided conversion id, allowing for retrieval of detailed information specific to that conversion.
+- [Conversion Notification](/docs/api/conversions/conversion-webhook.md): Enables partners to subscribe to conversion status updates. For detailed information on using conversion notifications and their features, please refer to our [Webhook Notifications](../../api-docs/webhooks) documentation.
+- [Conversions Listing](/docs/api/conversions/conversions-listing.md): Retrieves all conversions linked to the current Account, returning them as an array of conversion objects.
+- [Conversions YAML](/docs/api/conversions/conversions-yaml.md)
+- [Currencies Listing](/docs/api/currencies/currencies-listing.md): This feature offers a comprehensive list of all currencies supported by Wallex.
+- [Currencies YAML](/docs/api/currencies/currencies-yaml.md)
+- [Currency Rates](/docs/api/currencies/currency-rates.md): This feature provides real-time exchange rates for a single currency pair supported by Wallex. The rates are updated every minute to ensure accuracy and reflect the most current market conditions.
+- [Deduction Retrieve](/docs/api/deductions/deduction-retrieve.md): Returns the deduction associated with the provided deduction id, allowing for retrieval of detailed information specific to that deduction.
+- [Deduction Status Notification](/docs/api/deductions/deduction-webhook.md): Enables partners to subscribe to deduction status updates. For detailed information on using deduction notifications and their features, please refer to our [Webhook Notifications](../../api-docs/webhooks) documentation.
+- [Deduction Listing](/docs/api/deductions/deductions-listing.md): Retrieves all deduction linked to the current account, returning them as an array of deduction objects.
+- [Deductions YAML](/docs/api/deductions/deductions-yaml.md)
+- [Funding Listing](/docs/api/funding/funding-listing.md): Retrieves all funding linked to the current account, returning them as an array of funding objects.
+- [Funding Retrieve](/docs/api/funding/funding-retrieve.md): Returns the funding associated with the provided funding id, allowing for retrieval of detailed information specific to that funding.
+- [Funding Status Notification](/docs/api/funding/funding-webhook.md): Enables partners to subscribe to funding status updates. For detailed information on using funding notifications and their features, please refer to our [Webhook Notifications](../../api-docs/webhooks) documentation.
+- [Funding YAML](/docs/api/funding/funding-yaml.md)
+- [Internal Transfer Create](/docs/api/internal-transfers/internal-transfer-create.md): Creates an internal transfer of funds from one account to another account under the same partnership account.
+- [Internal Transfer Retrieve](/docs/api/internal-transfers/internal-transfer-retrieve.md): Returns the internal transfer associated with the provided internal transfer id, allowing for retrieval of detailed information specific to that internal transfer.
+- [Internal Transfers Listing](/docs/api/internal-transfers/internal-transfers-listing.md): Retrieves all internal transfers linked to the current Account, returning them as an array of internal transfer objects.
+- [Internal Transfers YAML](/docs/api/internal-transfers/internal-transfers-yaml.md)
+- [Available Payment Channels](/docs/api/payments/payment-channels.md): Retrieve a list of available payment channels. The array returned provides details about each supported channel, including the transaction limits for each settlement process. If your transaction amount exceeds the limit of a channel, it will automatically create a split settlement transaction.
+- [Payment Create](/docs/api/payments/payment-create.md): Create simple payment.
+- [Payment Documents](/docs/api/payments/payment-docs.md): Download document related to simple payment.
+- [Payment Fund](/docs/api/payments/payment-fund.md): Fund simple payment.
+- [Payment Quote](/docs/api/payments/payment-quote.md): Retrieve a quote or rates for a simple payment based on the specified currency pair and amount.
+- [Payment Retrieve](/docs/api/payments/payment-retrieve.md): Returns the simple payment associated with the provided simple payment id, allowing for retrieval of detailed information specific to that simple payment.
+- [Payment Upload URL](/docs/api/payments/payment-upload-url.md): Obtain a specific URL that you can use to upload necessary files of a simple payment transaction. Please upload your document by following the instructions provided in the [File Upload](../utils/file-upload) documentation.
+- [Payment Status Notification](/docs/api/payments/payment-webhook.md): Enables partners to subscribe to simple payment status updates. For detailed information on using simple payment notifications and their features, please refer to our [Webhook Notifications](../../api-docs/webhooks) documentation.
+- [Payments Listing](/docs/api/payments/payments-listing.md): Retrieves all simple payments linked to the current Account, returning them as an array of simple payment objects.
+- [Payments YAML](/docs/api/payments/payments-yaml.md)
+- [Purpose of Transfer](/docs/api/payments/purpose-of-transfer.md): Retrieve a list of available purpose of transfer.
+- [Company Retrieve](/docs/api/users/company-retrieve.md): Returns the company associated with the provided user id, allowing for retrieval of company information specific to that user.
+- [Company Update](/docs/api/users/company-update.md): This endpoint updates a specific company based on a valid user id, modifying the values of the provided body parameters. Some parameters are required for account approval. **Any parameters not included in the request will remain unchanged**.
+- [Customer Due Diligence Retrieve](/docs/api/users/customer-due-diligence-retrieve.md): Returns the customer due diligence associated with the provided user id, allowing for retrieval of customer due diligence information specific to that user.
+- [Customer Due Diligence Update](/docs/api/users/customer-due-diligence-update.md): This endpoint updates a specific customer due diligence based on a valid user id, modifying the values of the provided body parameters. Some parameters are required for account approval. **Any parameters not included in the request will remain unchanged**.
+- [Document Create](/docs/api/users/document-create.md): Obtain a specific URL that you can use to upload necessary files for member onboarding process. Please upload your document by following the instructions provided in the [File Upload](../utils/file-upload) documentation.
+- [Document Delete](/docs/api/users/document-delete.md): Deletes the document identified by the specified user id and document id, returns the document object one last time before removal.
+- [Document Retrieve](/docs/api/users/document-retrieve.md): Returns the document associated with the provided user id and document id, allowing for retrieval of document object specific to that user.
+- [Documents Listing](/docs/api/users/documents-listing.md): Returns the documents associated with the provided user id, allowing for retrieval of document object specific to that user.
+- [Entity Types Listing](/docs/api/users/entity-types-listing.md): Retrieves a list of entity types, each item containing a key and description. When performing [Customer Due Diligence Update](../users/customer-due-diligence-update), you will need to use the `key` field to update the entity type attribute.
+- [Products Usage Listing](/docs/api/users/products-usage-listing.md): Retrieves a list of products usage, each item containing a key and description. When performing [Customer Due Diligence Update](../users/customer-due-diligence-update), you will need to use the `key` field to update the product usage attribute.
+- [Signup](/docs/api/users/sign-up.md): Enables partners to register and create a member account. This API is disabled by default. Please contact contact@wallextech.com if you need this feature.
+- [Signup Lite Company](/docs/api/users/sign-up-company-lite.md): Enables partners to register and create a member account. This API is disabled by default. Please contact contact@wallextech.com if you need this feature. We need 1 business day for Account approval.
+- [Signup Lite Individual](/docs/api/users/sign-up-individual-lite.md): Enables partners to register and create a member account. This API is disabled by default. Please contact contact@wallextech.com if you need this feature. We need 1 business day for Account approval.
+- [User Detail Retrieve](/docs/api/users/user-detail-retrieve.md): Returns the user details associated with the provided user id, allowing for retrieval of detailed information specific to that user.
+- [User Detail Update](/docs/api/users/user-detail-update.md): This endpoint updates a specific user based on a valid user id, modifying the values of the provided body parameters. Some parameters are required for account approval. **Any parameters not included in the request will remain unchanged**.
+- [User Retrieve](/docs/api/users/user-retrieve.md): Returns the user associated with the provided user id, allowing for retrieval of basic information specific to that user.
+- [User Screening](/docs/api/users/user-screening.md): After all necessary user data and documents have been submitted, calling this endpoint will triggers Wallex compliance team to start a screening process based on the provided information. During the review, the user status will be updated to `pending_approval`. After the review is completed, a webhook notification will be sent with the outcome, one of the supported user statuses, such as `approved`, `document_needs_resubmission`, `withdrawn`, `terminated`, or `closed`.
+- [User Notification](/docs/api/users/user-webhook.md): Enables partners to subscribe to user status updates. For detailed information on using user notifications and their features, please refer to our [Webhook Notifications](../../api-docs/webhooks) documentation.
+- [Users Listing](/docs/api/users/users-listing.md): Retrieves a list of your users, sorted by registration date, with the most recently registered users displayed first.
+- [Users YAML](/docs/api/users/users-yaml.md)
+- [Business Types Listing](/docs/api/utils/business-types-listing.md): Retrieves a list of business types.
+- [Countries Listing](/docs/api/utils/countries-listing.md): Retrieves a list of countries.
+- [File Upload](/docs/api/utils/file-upload.md): Used for uploading business-related documents. Before using this endpoint, you must first generate an upload URL through the [Document Create](../users/document-create) or [Payment Upload URL](../payments/payment-upload-url).
+- [Utils YAML](/docs/api/utils/utils-yaml.md)
+- [Retrieve Webhook](/docs/api/webhooks/webhook-retrieve.md): Retrieve the latest webhook subscription settings for the partner.
+- [Update Webhook](/docs/api/webhooks/webhook-update.md): Updating a webhook subscription allows partners to modify their webhook settings. Partners must provide a valid URL and can specify additional header settings.
+- [Webhooks YAML](/docs/api/webhooks/webhooks-yaml.md)
+- [Collections Overview](/docs/api-docs/collections.md): The Collection API enables users to deposit funds into a Wallex wallet through Virtual Accounts. This feature is particularly useful for users who wish to collect payments from third parties. Once the collection is completed, the user’s balance is credited with the transferred amount.
+- [Conversion Overview](/docs/api-docs/conversions.md): The Conversion API allows users to exchange between currencies supported by the Wallex wallet.
+- [HS Code List](/docs/api-docs/hs-code.md): This page purpose is to list HS Code that is required in Electronic Wholesale Declaration
+- [Internal Transfers Overview](/docs/api-docs/internal-transfers.md): The Internal Transfers API allows partners to move funds between two Wallex accounts under the same partnership account.
+- [Payment Overview](/docs/api-docs/payments.md): The Payment API allows you to seamlessly initiate payments to your beneficiaries or withdraw funds directly to your own account, providing a streamlined and efficient solution for managing financial transactions.
+- [Users Overview](/docs/api-docs/users.md): Users represent entities entitled to an account within the Wallex system. You can access Wallex features on behalf of a user’s account by supplying the onBehalfOfAccount or onBehalfOfUser parameter, either in the request body or as a query parameter, based on your specific requirements. This enables smooth management of operations while performing actions on behalf of different accounts.
+- [Webhook Notifications](/docs/api-docs/webhooks.md): The Webhook Notification API enables partners to subscribe to Wallex transactions. Once subscribed, partners will receive real-time notifications shortly after events occur on Wallex.
+- [Concept](/docs/concept.md)
+- [Introduction](/docs/intro.md): Welcome to the Wallex API!
+- [Receive Funds](/docs/receive-funds.md)
+- [Send Your First Payment](/docs/send-first-payment.md)

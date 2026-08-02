@@ -1,0 +1,23 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.wallex.asia/docs/intro
+versioning:
+  scheme: uri-path
+  current: v2
+  spec_version: 2.0.x
+  docs: https://docs.wallex.asia/
+tokens:
+  bearer_ttl_hours: 8
+  refreshable: true
+  revocation: POST /v2/logout
+deprecation:
+  policy_url: null
+  sunset_header: unknown
+  notes: No formal deprecation/sunset policy is published in the developer docs.
+sla:
+  url: null
+  uptime_target: null
+status_page: null
+notes: >-
+  No public status page or deprecation policy was found for the Wallex Partner
+  API. Versioning is via the /v2 URI path prefix.

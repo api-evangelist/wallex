@@ -1,0 +1,24 @@
+generated: '2026-07-21'
+method: derived
+source: https://docs.wallex.asia/docs/intro
+standards:
+  - id: oauth2
+    conforms: false
+    evidence: Auth is X-Api-Key (apiKey) plus a bearer token minted from accessKeyId/secretAccessKey; no OAuth2 authorization flows.
+  - id: oidc
+    conforms: false
+  - id: api-key
+    conforms: true
+    evidence: X-Api-Key header required on every request (docs/intro).
+  - id: http-bearer
+    conforms: true
+    evidence: Authorization Bearer token for restricted resources, minted at POST /v2/authenticate.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Errors use plain HTTP status codes (400/401/403), not application/problem+json.
+  - id: webhooks
+    conforms: true
+    evidence: Partner webhook subscription with POST delivery, 200-ack, 30s timeout, 3 retries.
+  - id: rest-json
+    conforms: true
+    evidence: JSON-based REST API over HTTPS.

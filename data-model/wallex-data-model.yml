@@ -1,0 +1,74 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.wallex.asia/docs/concept
+notes: >-
+  Entity graph derived from the Concept page and the object descriptions in the
+  operation reference. The Wallex account model is hierarchical: an Account has
+  Users; a Partner account onboards member Accounts; transactions execute under
+  an approved User via onBehalfOfAccount/onBehalfOfUser.
+entities:
+  - name: Account
+    attributes: [entity_type (Individual|Company), classification (Standard|Partner), kyc_level (Regular|Lite)]
+    relationships:
+      - {type: has_many, target: User, via: users}
+      - {type: has_many, target: Balance, via: balances}
+      - {type: has_many, target: Account, via: members, note: partner accounts onboard member accounts}
+  - name: User
+    attributes: [status (pending_approval|approved|document_needs_resubmission|withdrawn|terminated|closed)]
+    relationships:
+      - {type: belongs_to, target: Account}
+      - {type: has_one, target: Company, via: userId}
+      - {type: has_one, target: CustomerDueDiligence, via: userId}
+      - {type: has_many, target: Document, via: userId}
+  - name: Company
+    relationships:
+      - {type: belongs_to, target: User, via: userId}
+  - name: CustomerDueDiligence
+    relationships:
+      - {type: belongs_to, target: User, via: userId}
+  - name: Document
+    relationships:
+      - {type: belongs_to, target: User, via: userId}
+  - name: Beneficiary
+    relationships:
+      - {type: belongs_to, target: Account}
+  - name: Balance
+    attributes: [currency]
+    relationships:
+      - {type: belongs_to, target: Account}
+      - {type: has_many, target: Transaction, via: balance history}
+  - name: Transaction
+    relationships:
+      - {type: belongs_to, target: Balance}
+  - name: CollectionAccount
+    description: Virtual account (VA) for receiving funds in a currency.
+    relationships:
+      - {type: belongs_to, target: User}
+      - {type: has_many, target: Collection}
+  - name: Collection
+    relationships:
+      - {type: belongs_to, target: CollectionAccount}
+  - name: CollectionRequest
+    attributes: [status (... Cancel|Full Paid ...), purpose_code]
+    relationships:
+      - {type: belongs_to, target: Account}
+  - name: Conversion
+    relationships:
+      - {type: belongs_to, target: Account}
+  - name: Payment
+    attributes: [status (awaiting_funds|under_review|processing|in_transit|completed|failed|rejected)]
+    relationships:
+      - {type: belongs_to, target: Account}
+      - {type: belongs_to, target: Beneficiary, via: beneficiary}
+      - {type: has_one, target: Funding, via: fund step}
+  - name: Funding
+    relationships:
+      - {type: belongs_to, target: Account}
+  - name: Deduction
+    relationships:
+      - {type: belongs_to, target: Account}
+  - name: InternalTransfer
+    relationships:
+      - {type: belongs_to, target: Account, note: source and destination accounts under the same partnership}
+  - name: Webhook
+    description: Single partner-level subscription (URL + headers) for all event notifications.

@@ -1,7 +1,16 @@
 aid: wallex
 name: Wallex
-description: Wallex is a company surfaced as a portfolio company of 500-global and added to the API Evangelist
-  network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Wallex is a Singapore-headquartered cross-border payments and business banking
+  platform for businesses across Southeast Asia and Greater China. Its Partner
+  API is a JSON REST API that lets platforms embed multi-currency wallets, issue
+  virtual collection accounts, run FX conversions, send cross-border payments to
+  beneficiaries, and onboard and KYC their own members. The API is organised
+  around a hierarchical account model (Standard and Partner accounts, Individual
+  and Company entities, Regular and Lite KYC) and covers authentication,
+  balances, beneficiaries, collections, collection requests, conversions,
+  currencies, deductions, funding, internal transfers, payments, users, and
+  webhooks. Wallex is a portfolio company of 500 Global.
 url: https://raw.githubusercontent.com/api-evangelist/wallex/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -9,12 +18,49 @@ x-backed-by:
 - 500-global
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
+image: https://docs.wallex.asia/img/wallex-icon.png
 tags:
 - Company
-apis: []
+- Payments
+- Cross-Border Payments
+- Foreign Exchange
+- Fintech
+- Collections
+- B2B Payments
+- Embedded Finance
+- Southeast Asia
+apis:
+- name: Wallex Partner API
+  description: >-
+    JSON REST API for authentication, users/KYC, balances, beneficiaries,
+    collections, collection requests, conversions, currencies, deductions,
+    funding, internal transfers, payments, and webhook notifications. Auth is a
+    static X-Api-Key plus an 8-hour bearer token minted at POST /v2/authenticate.
+  humanURL: https://docs.wallex.asia/
+  baseURL: https://api.wallex.asia/v2
+  tags:
+  - Payments
+  - Cross-Border Payments
+  - Foreign Exchange
+  - Collections
+  properties:
+  - type: LLMsTxt
+    url: llms/wallex-llms.txt
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -23,3 +69,44 @@ maintainers:
 common:
 - type: Website
   url: https://wallex.asia
+- type: DeveloperPortal
+  url: https://developer.wallex.asia/
+- type: Documentation
+  url: https://docs.wallex.asia/
+- type: APIReference
+  url: https://docs.wallex.asia/docs/api/authentication/authenticate
+- type: GettingStarted
+  url: https://docs.wallex.asia/docs/send-first-payment
+- type: Support
+  url: https://help.wallex.asia/
+- type: Authentication
+  url: authentication/wallex-authentication.yml
+- type: Conventions
+  url: conventions/wallex-conventions.yml
+- type: ErrorCatalog
+  url: errors/wallex-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/wallex-lifecycle.yml
+- type: Conformance
+  url: conformance/wallex-conformance.yml
+- type: RateLimits
+  url: rate-limits/wallex-rate-limits.yml
+- type: MCPServer
+  url: mcp/wallex-mcp.yml
+- type: Webhooks
+  url: asyncapi/wallex-webhooks.yml
+- type: Sandbox
+  url: sandbox/wallex-sandbox.yml
+- type: DataModel
+  url: data-model/wallex-data-model.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: DomainSecurity
+  url: security/wallex-domain-security.yml
+- type: LLMsTxt
+  url: llms/wallex-llms.txt
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 17
+  pass: local-v1

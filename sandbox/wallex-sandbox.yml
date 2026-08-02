@@ -1,0 +1,30 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.wallex.asia/docs/api-docs/webhooks
+environments:
+  sandbox:
+    exists: true
+    evidence: The webhook documentation publishes a distinct Sandbox environment with its own outbound webhook IP (Singapore 175.41.191.143), separate from Production.
+    webhook_source_ip:
+      - {region: SG, ip: 175.41.191.143}
+  production:
+    exists: true
+    webhook_source_ip:
+      - {region: SG, ip: 3.0.113.21}
+      - {region: ID, ip: 108.136.189.251}
+      - {region: HK, ip: 18.166.110.81}
+      - {region: MY, ip: 13.251.169.211}
+      - {region: JP, ip: 13.230.240.139}
+credentials:
+  provisioning: Sandbox X-Api-Key / accessKeyId / secretAccessKey are issued by Wallex on request (contact@wallextech.com). No self-serve key page or published test credentials.
+test_triggers:
+  - operationId: collection-request-paid
+    description: Manually mark a collection request as Full Paid without an actual payment transaction — a built-in way to simulate an inbound collection in testing.
+    doc: https://docs.wallex.asia/docs/api/collections-request/collection-request-paid
+simulatable_statuses:
+  payment: [awaiting_funds, under_review, processing, in_transit, completed, failed, rejected]
+  user: [pending_approval, approved, document_needs_resubmission, withdrawn, terminated, closed]
+notes: >-
+  No published magic test card numbers / test IBANs were found — Wallex is a
+  B2B cross-border payments platform whose sandbox is credential-provisioned per
+  partner. Only verbatim, published sandbox facts are recorded here.

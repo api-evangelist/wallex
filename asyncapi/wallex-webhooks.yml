@@ -1,0 +1,57 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.wallex.asia/docs/api-docs/webhooks
+spec_type: Webhooks
+notes: >-
+  Wallex documents a webhook notification surface but does not publish an
+  AsyncAPI document. Partners register a single subscription endpoint; Wallex
+  POSTs events to it and expects a 200 within 30 seconds, otherwise the
+  notification is retried up to 3 times. Delivery is per-transaction/status.
+subscription:
+  model: single partner subscription endpoint
+  manage:
+    - operationId: webhook-retrieve
+      description: Retrieve the latest webhook subscription settings for the partner.
+    - operationId: webhook-update
+      description: Update the subscription URL and optional custom headers.
+  delivery:
+    method: POST
+    expected_ack: 200
+    timeout_seconds: 30
+    retries: 3
+  security:
+    ip_whitelisting: true
+    outbound_ips:
+      sandbox:
+        - {region: SG, ip: 175.41.191.143}
+      production:
+        - {region: SG, ip: 3.0.113.21}
+        - {region: ID, ip: 108.136.189.251}
+        - {region: HK, ip: 18.166.110.81}
+        - {region: MY, ip: 13.251.169.211}
+        - {region: JP, ip: 13.230.240.139}
+events:
+  - name: collection.status
+    description: Collection status updates.
+    doc: https://docs.wallex.asia/docs/api/collections/collection-webhook
+  - name: collection_account.status
+    description: Collection account (virtual account) status updates.
+    doc: https://docs.wallex.asia/docs/api/collections/collection-account-webhook
+  - name: collection_request.status
+    description: Collection request status updates.
+    doc: https://docs.wallex.asia/docs/api/collections-request/collection-request-webhook
+  - name: payment.status
+    description: Simple payment status updates (awaiting_funds, under_review, processing, in_transit, completed, failed, rejected).
+    doc: https://docs.wallex.asia/docs/api/payments/payment-webhook
+  - name: conversion.status
+    description: Conversion status updates.
+    doc: https://docs.wallex.asia/docs/api/conversions/conversion-webhook
+  - name: funding.status
+    description: Funding status updates.
+    doc: https://docs.wallex.asia/docs/api/funding/funding-webhook
+  - name: deduction.status
+    description: Deduction status updates.
+    doc: https://docs.wallex.asia/docs/api/deductions/deduction-webhook
+  - name: user.status
+    description: User status updates (pending_approval, approved, document_needs_resubmission, withdrawn, terminated, closed).
+    doc: https://docs.wallex.asia/docs/api/users/user-webhook

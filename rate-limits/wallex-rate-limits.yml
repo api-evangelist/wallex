@@ -1,0 +1,14 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.wallex.asia/docs/intro
+rate_limits:
+  - scope: global
+    limit_count: 5
+    interval: second
+    description: Up to 5 API requests per second.
+  - scope: global
+    limit_count: 432000
+    interval: day
+    description: Maximum of 432,000 requests per day.
+custom_limits: Available on request (contact@wallextech.com).
+signaling: Not documented (no rate-limit response headers described in the developer docs).

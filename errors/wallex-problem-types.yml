@@ -1,0 +1,22 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.wallex.asia/docs/intro
+format: http-status
+notes: >-
+  The Wallex Partner API signals errors with standard HTTP status codes rather
+  than an RFC 9457 problem+json envelope. The codes below are the ones the
+  reference documents across operations (authentication, payments,
+  beneficiaries, collections, conversions, etc.).
+problems:
+  - status: 400
+    title: Bad Request
+    description: The server could not understand the request due to invalid syntax or missing information.
+    remediation: Validate required body/query parameters; for beneficiaries call Beneficiary Requirement first to learn the required fields for the currency/country combination.
+  - status: 401
+    title: Unauthorized
+    description: Access to this resource requires authentication. Returned when the Authorization (Bearer) header is missing or invalid on a restricted resource.
+    remediation: "Obtain a token via POST /v2/authenticate and send it as `Authorization: Bearer <token>`. Tokens expire after 8 hours."
+  - status: 403
+    title: Forbidden
+    description: You do not have the necessary permissions to access this resource. Also returned when the X-Api-Key header is missing or contains an invalid value.
+    remediation: Include a valid X-Api-Key header on every request. Some features (e.g. Sign Up, partner-scoped Collection Account Create, Beneficiary Validation) are disabled by default and must be enabled by Wallex.
