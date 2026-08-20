@@ -40,6 +40,16 @@ tags:
 - Cross-Border Payments
 - Foreign Exchange
 - Fintech
+- Collection
+- B2B Payments
+- Embedded Finance
+- Southeast Asia
+tags_raw:
+- Company
+- Payments
+- Cross-Border Payments
+- Foreign Exchange
+- Fintech
 - Collections
 - B2B Payments
 - Embedded Finance
@@ -54,6 +64,11 @@ apis:
   humanURL: https://docs.wallex.asia/
   baseURL: https://api.wallex.asia/v2
   tags:
+  - Payments
+  - Cross-Border Payments
+  - Foreign Exchange
+  - Collection
+  tags_raw:
   - Payments
   - Cross-Border Payments
   - Foreign Exchange
